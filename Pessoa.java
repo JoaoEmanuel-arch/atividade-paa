@@ -2,13 +2,13 @@ package main.java.com.joao.RedeSocial;
 
 import java.util.Objects;
 
-public class NoPessoa {
+public class Pessoa {
 
     private int id;
     private String nome;
     private int idade;
 
-    public NoPessoa(int id, String nome, int idade){
+    public Pessoa(int id, String nome, int idade){
         this.id = id;
         this.nome = nome;
         this.idade = idade;
@@ -40,7 +40,7 @@ public class NoPessoa {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof NoPessoa noPessoa)) return false;
+        if (!(o instanceof Pessoa noPessoa)) return false;
         return id == noPessoa.id && idade == noPessoa.idade && Objects.equals(nome, noPessoa.nome);
     }
 

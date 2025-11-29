@@ -1,5 +1,7 @@
 package main.java.com.joao.RedeSocial;
 
+import java.util.Objects;
+
 public class Par {
 
     private String origem;
@@ -24,6 +26,17 @@ public class Par {
 
     public void setDestino(String destino) {
         this.destino = destino;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Par par)) return false;
+        return Objects.equals(origem, par.origem) && Objects.equals(destino, par.destino);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(origem, destino);
     }
 
     @Override
