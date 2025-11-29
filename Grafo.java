@@ -8,7 +8,7 @@ import java.util.Map;
 public class Grafo {
 
     private Map<Integer, Pessoa> pessoas = new HashMap<>(); // guarda todas as pessoas da rede social (id -> pessoa)
-    private Map<Par, Double> matrizEsparsa = new HashMap<Par, Double>(); // guarda todas as conexões existentes entre as pessoas da rede social
+    private Map<Par, Double> matrizEsparsa = new HashMap<>(); // guarda todas as conexões existentes entre as pessoas da rede social
 
     public void adicionaPessoa(Pessoa pessoa){
         pessoas.put(pessoa.getId(), pessoa);
@@ -44,6 +44,21 @@ public class Grafo {
         return vizinhosRaio2;
     }
 
+    // ESSA FUNÇÃO NÃO FAZ OQ TA PEDINDO, MAS ELA FAZ SENTIDO
+    public Double calcularInfluencia(String origem, String destino){
+        for(String sqc : getVizinhosRaio1(origem)){ // o sqc é cada vizinho primeiro
+            if(sqc.equals(destino)){ // aqui o sqc é o próprio destino
+                return getPeso(origem, sqc);
+            }
+        }
 
+        for(String sqc : getVizinhosRaio2(origem)){
+            if(sqc.equals(destino)){
+                return getPeso(origem, sqc) * getPeso(sqc, destino);
+            }
+        }
+
+        return 0.0;
+    }
 
 }
