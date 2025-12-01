@@ -1,13 +1,10 @@
 package main.java.com.joao.RedeSocial;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Grafo {
 
-    private Map<Integer, Pessoa> pessoas = new HashMap<>(); // guarda todas as pessoas da rede social (id -> pessoa)
+    private Map<String, Pessoa> pessoas = new HashMap<>(); // guarda todas as pessoas da rede social (id -> pessoa)
     private Map<Par, Double> matrizEsparsa = new HashMap<>(); // guarda todas as conexões existentes entre as pessoas da rede social
 
     public void adicionaPessoa(Pessoa pessoa) {
@@ -109,6 +106,33 @@ public class Grafo {
         return recebido;
     }
 
+    public List<Map.Entry<String, Double>> top3MaisInfluentes(){ // retorna uma lista com o id (string) dos 3 mais influentes
+        Map<String, Double> influencias = new HashMap<>(); // salvar todas as influências dos vértices
+
+        for(String id : pessoas.keySet()){
+            double inf = calcularInfluencia(id);
+            influencias.put(id, inf); // fica salvo o id(origem) -> influência
+        }
+
+        // transformo em uma lista para ordenar do maior para o menor
+        List<Map.Entry<String, Double>> lista = new ArrayList<>(influencias.entrySet());
+
+        // sobrescreve o comparator para ordenar com base no peso da aresta e não pelo id
+        Collections.sort(lista, new Comparator<Map.Entry<String, Double>>() {
+            @Override
+            public int compare(Map.Entry<String, Double> a, Map.Entry<String, Double> b) {
+                return Double.compare(b.getValue(), a.getValue());
+            }
+        });
+
+        List<Map.Entry<String, Double>> top3 = new ArrayList<>(); //lista pra salvar os 3 primeiros da lista
+
+        for(int i=0; i<lista.size() && i<3; i++){ // pega só 3 primeiros ou os que estiverem lá dentro
+            top3.add(lista.get(i));
+        }
+
+        return top3;
+    }
 
 
 
