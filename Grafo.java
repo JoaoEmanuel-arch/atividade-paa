@@ -26,7 +26,7 @@ public class Grafo {
     public List<String> getVizinhosRaio1(String origem) { // retorna os vizinhos do vértice com raio 1
         List<String> vizinhosRaio1 = new ArrayList<>();
 
-        for (Par chave : matrizEsparsa.keySet()) { // percorre a matriz e vai salvando cada conexão (Par, peso)
+        for (Par chave : matrizEsparsa.keySet()) { // percorre a matriz e vai salvando cada chave/conexão (origem
             if (chave.getOrigem().equals(origem)) { // string não pode ser comparada com ==, tem que usar o equals da classe String
                 vizinhosRaio1.add(chave.getDestino()); // com base na origem, eu pego o vértice adjacente
             }
@@ -69,7 +69,7 @@ public class Grafo {
         return 0.0; // não alcança o destino
     }
 
-    public double calcularInfluencia(String origem) {
+    public double calcularInfluencia(String origem) { // o quanto uma pessoa influencia as demais
         double influencia = 0.0;
 
         for (String b : getVizinhosRaio1(origem)) { // lista de vizinhos da origem (intermediários), o intermediário pode ser o fim da conexão
@@ -85,5 +85,31 @@ public class Grafo {
         }
         return influencia;
     }
+
+    public double calcularRecebido(String destino){ // o quanto que cada um recebeu de influência
+        double recebido = 0.0;
+
+        // influência de vizinhos de raio 1: arestas que batem direto no destino
+        for(Par chave : matrizEsparsa.keySet()){ // percorre todas as chaves da matriz (origem, destino) -> aresta
+            if(chave.getDestino.equals(destino)){ // se em uma conexão eu achar a que eu estou calculando:
+                Double p = matrizEsparsa.get(chave); //eu passo a chave e ele me retorna o peso
+                recebido += p; // soma essa influência no total recebido
+
+                String origem = chave.getOrigem(); // essa origem aqui é aresta com o destino de raio 1
+
+                // influência de vizinhos de raio 2 -> andando pra trás
+                for (Par outra : matrizEsparsa.keySet()) {
+                    if (outra.getDestino.equals(origem)) { // se o final de uma for igual ao começo da aresta colada de raio 1
+                        Double p2 = matrizEsparsa.get(outra); // retorno o peso dela
+                        recebido += p * p2; // multiplico essas probabilidades
+                    }
+                }
+            }
+        }
+        return recebido;
+    }
+
+
+
 
 }
