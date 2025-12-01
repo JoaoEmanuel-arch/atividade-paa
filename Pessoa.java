@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Pessoa {
 
-    private int id;
+    private String id;
     private String nome;
     private int idade;
 
@@ -14,11 +14,11 @@ public class Pessoa {
         this.idade = idade;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -40,8 +40,8 @@ public class Pessoa {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Pessoa noPessoa)) return false;
-        return id == noPessoa.id && idade == noPessoa.idade && Objects.equals(nome, noPessoa.nome);
+        if (!(o instanceof Pessoa pessoa)) return false;
+        return idade == pessoa.idade && Objects.equals(id, pessoa.id) && Objects.equals(nome, pessoa.nome);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "NoPessoa{" +
-                "id=" + id +
+        return "Pessoa{" +
+                "id='" + id + '\'' +
                 ", nome='" + nome + '\'' +
                 ", idade=" + idade +
                 '}';
