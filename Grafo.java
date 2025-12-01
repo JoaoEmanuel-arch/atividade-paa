@@ -134,5 +134,19 @@ public class Grafo {
         return top3;
     }
 
+    public String menosInfluenciavel(){
+        double min = Double.MAX_VALUE; // o maior que cabe pra fazer a comparação
+        String idMin = "";
+
+        for(String id : pessoas.keySet()){ // lista de todas od ids das pessoas
+            double valor = calcularInfluenciaRecebida(id); // vai comparando a influência recebida de cada um e comparando
+            if(valor < min){
+                min = valor;
+                idMin = id;
+            }
+        }
+
+        return idMin;
+    }
 
 }
