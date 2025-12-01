@@ -83,14 +83,14 @@ public class Grafo {
         return influencia;
     }
 
-    public double calcularRecebido(String destino){ // o quanto que cada um recebeu de influência
-        double recebido = 0.0;
+    public double calcularInfluenciaRecebida(String destino){ // o quanto que cada um recebeu de influência
+        double recebida = 0.0;
 
         // influência de vizinhos de raio 1: arestas que batem direto no destino
         for(Par chave : matrizEsparsa.keySet()){ // percorre todas as chaves da matriz (origem, destino) -> aresta
             if(chave.getDestino.equals(destino)){ // se em uma conexão eu achar a que eu estou calculando:
                 Double p = matrizEsparsa.get(chave); //eu passo a chave e ele me retorna o peso
-                recebido += p; // soma essa influência no total recebido
+                recebida += p; // soma essa influência no total recebido
 
                 String origem = chave.getOrigem(); // essa origem aqui é aresta com o destino de raio 1
 
@@ -98,12 +98,12 @@ public class Grafo {
                 for (Par outra : matrizEsparsa.keySet()) {
                     if (outra.getDestino.equals(origem)) { // se o final de uma for igual ao começo da aresta colada de raio 1
                         Double p2 = matrizEsparsa.get(outra); // retorno o peso dela
-                        recebido += p * p2; // multiplico essas probabilidades
+                        recebida += p * p2; // multiplico essas probabilidades
                     }
                 }
             }
         }
-        return recebido;
+        return recebida;
     }
 
     public List<Map.Entry<String, Double>> top3MaisInfluentes(){ // retorna uma lista com o id (string) dos 3 mais influentes
@@ -133,7 +133,6 @@ public class Grafo {
 
         return top3;
     }
-
 
 
 }
