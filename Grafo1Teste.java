@@ -38,14 +38,14 @@ public class Grafo1Teste {
         grafo.adicionarAresta("H", "A", 0.25);
 
         System.out.println("INFLUÊNCIA DE TODAS AS PESSOAS NA REDE SOCIAL:");
-        System.out.println("Influência do Alisson: " + grafo.calcularInfluencia("A"));
-        System.out.println("Influência do Bruno: " + grafo.calcularInfluencia("B"));
-        System.out.println("Influência do Carlos: " + grafo.calcularInfluencia("C"));
-        System.out.println("Influência do Daniel: " + grafo.calcularInfluencia("D"));
-        System.out.println("Influência do Emanuel: " + grafo.calcularInfluencia("E"));
-        System.out.println("Influência do Felipe: " + grafo.calcularInfluencia("F"));
-        System.out.println("Influência do Guilherme: " + grafo.calcularInfluencia("G"));
-        System.out.println("Influência do Henrique: " + grafo.calcularInfluencia("H"));
+        System.out.println("Influência do Alisson: " + String.format("%.2f", grafo.calcularInfluencia("A")));
+        System.out.println("Influência do Bruno: " + String.format("%.2f", grafo.calcularInfluencia("B")));
+        System.out.println("Influência do Carlos: " + String.format("%.2f", grafo.calcularInfluencia("C")));
+        System.out.println("Influência do Daniel: " + String.format("%.2f", grafo.calcularInfluencia("D")));
+        System.out.println("Influência do Emanuel: " + String.format("%.2f", grafo.calcularInfluencia("E")));
+        System.out.println("Influência do Felipe: " + String.format("%.2f", grafo.calcularInfluencia("F")));
+        System.out.println("Influência do Guilherme: " + String.format("%.2f", grafo.calcularInfluencia("G")));
+        System.out.println("Influência do Henrique: " + String.format("%.2f", grafo.calcularInfluencia("H")));
 
         System.out.println("--------------------------------------------------------------------");
         System.out.println("PESSOA MENOS INFLUENCIÁVEL NA REDE SOCIAL: " + grafo.menosInfluenciavel());
