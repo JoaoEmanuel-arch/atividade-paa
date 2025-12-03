@@ -88,7 +88,7 @@ public class Grafo {
 
         // influência de vizinhos de raio 1: arestas que batem direto no destino
         for(Par chave : matrizEsparsa.keySet()){ // percorre todas as chaves da matriz (origem, destino) -> aresta
-            if(chave.getDestino.equals(destino)){ // se em uma conexão eu achar a que eu estou calculando:
+            if(chave.getDestino() != null && chave.getDestino().equals(destino)){ // se em uma conexão eu achar a que eu estou calculando:
                 Double p = matrizEsparsa.get(chave); //eu passo a chave e ele me retorna o peso
                 recebida += p; // soma essa influência no total recebido
 
@@ -96,7 +96,7 @@ public class Grafo {
 
                 // influência de vizinhos de raio 2 -> andando pra trás
                 for (Par outra : matrizEsparsa.keySet()) {
-                    if (outra.getDestino.equals(origem)) { // se o final de uma for igual ao começo da aresta colada de raio 1
+                    if (outra.getDestino().equals(origem)) { // se o final de uma for igual ao começo da aresta colada de raio 1
                         Double p2 = matrizEsparsa.get(outra); // retorno o peso dela
                         recebida += p * p2; // multiplico essas probabilidades
                     }
