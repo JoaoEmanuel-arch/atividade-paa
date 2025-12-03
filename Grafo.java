@@ -7,7 +7,7 @@ public class Grafo {
     private Map<String, Pessoa> pessoas = new HashMap<>(); // guarda todas as pessoas da rede social (id -> pessoa)
     private Map<Par, Double> matrizEsparsa = new HashMap<>(); // guarda todas as conexões existentes entre as pessoas da rede social
 
-    public void adicionaPessoa(Pessoa pessoa) {
+    public void adicionarPessoa(Pessoa pessoa) {
         pessoas.put(pessoa.getId(), pessoa);
     }
 
