@@ -1,11 +1,12 @@
 package main.java.com.joao.RedeSocial;
 
-public class Main {
+public class Grafo1Teste {
 
     public static void main(String[] args){
 
         Grafo grafo = new Grafo();
 
+        //GRAFO 1 - Rede com centro forte e caminhos encadeados
         grafo.adicionarPessoa(new Pessoa("A", "Alisson", 20));
         grafo.adicionarPessoa(new Pessoa("B", "Bruno", 25));
         grafo.adicionarPessoa(new Pessoa("C", "Carlos", 30));
@@ -18,9 +19,12 @@ public class Main {
         grafo.adicionarAresta("A", "B", 0.80);
         grafo.adicionarAresta("A", "G", 0.50);
         grafo.adicionarAresta("A", "F", 0.08);
+        grafo.adicionarAresta("A", "C", 0.22);
         grafo.adicionarAresta("B", "C", 0.72);
+        grafo.adicionarAresta("B", "G", 0.18);
         grafo.adicionarAresta("C", "D", 0.68);
         grafo.adicionarAresta("C", "G", 0.86);
+        grafo.adicionarAresta("D", "C", 0.40);
         grafo.adicionarAresta("E", "A", 0.91);
         grafo.adicionarAresta("E", "B", 0.70);
         grafo.adicionarAresta("E", "F", 0.83);
@@ -31,6 +35,7 @@ public class Main {
         grafo.adicionarAresta("G", "D", 0.90);
         grafo.adicionarAresta("G", "H", 0.40);
         grafo.adicionarAresta("H", "D", 0.20);
+        grafo.adicionarAresta("H", "A", 0.25);
 
         System.out.println("INFLUÊNCIA DE TODAS AS PESSOAS NA REDE SOCIAL:");
         System.out.println("Influência do Alisson: " + grafo.calcularInfluencia("A"));
