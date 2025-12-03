@@ -106,7 +106,7 @@ public class Grafo {
         return recebida;
     }
 
-    public List<Map.Entry<String, Double>> top3MaisInfluentes(){ // retorna uma lista com o id (string) dos 3 mais influentes
+    public List<String> top3MaisInfluentes(){ // retorna uma lista com os nomes das 3 pessoas mais influentes
         Map<String, Double> influencias = new HashMap<>(); // salvar todas as influências dos vértices
 
         for(String id : pessoas.keySet()){
@@ -114,21 +114,20 @@ public class Grafo {
             influencias.put(id, inf); // fica salvo o id(origem) -> influência
         }
 
-        // transformo em uma lista para ordenar do maior para o menor
-        List<Map.Entry<String, Double>> lista = new ArrayList<>(influencias.entrySet());
+        List<String> ids = new ArrayList<>(influencias.keySet()); // crio uma lista só com os nomes
 
         // sobrescreve o comparator para ordenar com base no peso da aresta e não pelo id
-        Collections.sort(lista, new Comparator<Map.Entry<String, Double>>() {
+        Collections.sort(ids, new Comparator<String>() {
             @Override
-            public int compare(Map.Entry<String, Double> a, Map.Entry<String, Double> b) {
-                return Double.compare(b.getValue(), a.getValue());
+            public int compare(String a, String b) {
+                return Double.compare(influencias.get(b), influencias.get(a));
             }
         });
 
-        List<Map.Entry<String, Double>> top3 = new ArrayList<>(); //lista pra salvar os 3 primeiros da lista
-
-        for(int i=0; i<lista.size() && i<3; i++){ // pega só 3 primeiros ou os que estiverem lá dentro
-            top3.add(lista.get(i));
+        List<String> top3 = new ArrayList<>(); // lista pra salvar os 3 nomes
+        for(int i=0; i<ids.size() && i<3; i++){ // pega só 3 primeiros ou os que estiverem lá dentro
+            String id = ids.get(i);
+            top3.add(pessoas.get(id).getNome());
         }
 
         return top3;
