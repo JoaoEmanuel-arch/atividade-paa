@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Par {
 
-    public String getDestino;
     private String origem;
     private String destino;
 
