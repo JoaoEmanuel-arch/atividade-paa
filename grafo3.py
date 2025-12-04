@@ -5,7 +5,7 @@ G = nx.DiGraph()
 
 G.add_nodes_from(["A","B","C","D","E","F","G","H"])
 
-arestas = [
+Arestas = [
     ("A","B",0.92),
     ("A","C",0.88),
     ("A","D",0.80),
