@@ -1,0 +1,61 @@
+package main.java.com.joao.RedeSocial;
+
+public class Grafo1Teste {
+
+    public static void main(String[] args){
+
+        Grafo grafo = new Grafo();
+
+        //GRAFO 1 - Rede com centro forte e caminhos encadeados
+        grafo.adicionarPessoa(new Pessoa("A", "Alisson", 20));
+        grafo.adicionarPessoa(new Pessoa("B", "Bruno", 25));
+        grafo.adicionarPessoa(new Pessoa("C", "Carlos", 30));
+        grafo.adicionarPessoa(new Pessoa("D", "Daniel", 22));
+        grafo.adicionarPessoa(new Pessoa("E", "Emanuel", 18));
+        grafo.adicionarPessoa(new Pessoa("F", "Felipe", 27));
+        grafo.adicionarPessoa(new Pessoa("G", "Guilherme", 23));
+        grafo.adicionarPessoa(new Pessoa("H", "Henrique", 17));
+
+        grafo.adicionarAresta("A", "B", 0.80);
+        grafo.adicionarAresta("A", "G", 0.50);
+        grafo.adicionarAresta("A", "F", 0.08);
+        grafo.adicionarAresta("A", "C", 0.22);
+        grafo.adicionarAresta("B", "C", 0.72);
+        grafo.adicionarAresta("B", "G", 0.18);
+        grafo.adicionarAresta("C", "D", 0.68);
+        grafo.adicionarAresta("C", "G", 0.86);
+        grafo.adicionarAresta("D", "C", 0.40);
+        grafo.adicionarAresta("E", "A", 0.91);
+        grafo.adicionarAresta("E", "B", 0.70);
+        grafo.adicionarAresta("E", "F", 0.83);
+        grafo.adicionarAresta("E", "H", 0.16);
+        grafo.adicionarAresta("F", "C", 0.62);
+        grafo.adicionarAresta("F", "G", 0.58);
+        grafo.adicionarAresta("F", "H", 0.30);
+        grafo.adicionarAresta("G", "D", 0.90);
+        grafo.adicionarAresta("G", "H", 0.40);
+        grafo.adicionarAresta("H", "D", 0.20);
+        grafo.adicionarAresta("H", "A", 0.25);
+
+        System.out.println("INFLUÊNCIA DE TODAS AS PESSOAS NA REDE SOCIAL:");
+        System.out.println("Influência do Alisson: " + String.format("%.2f", grafo.calcularInfluencia("A")));
+        System.out.println("Influência do Bruno: " + String.format("%.2f", grafo.calcularInfluencia("B")));
+        System.out.println("Influência do Carlos: " + String.format("%.2f", grafo.calcularInfluencia("C")));
+        System.out.println("Influência do Daniel: " + String.format("%.2f", grafo.calcularInfluencia("D")));
+        System.out.println("Influência do Emanuel: " + String.format("%.2f", grafo.calcularInfluencia("E")));
+        System.out.println("Influência do Felipe: " + String.format("%.2f", grafo.calcularInfluencia("F")));
+        System.out.println("Influência do Guilherme: " + String.format("%.2f", grafo.calcularInfluencia("G")));
+        System.out.println("Influência do Henrique: " + String.format("%.2f", grafo.calcularInfluencia("H")));
+
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("PESSOA MENOS INFLUENCIÁVEL NA REDE SOCIAL: " + grafo.menosInfluenciavel());
+
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("TOP 3 PESSOAS MAIS INFLUENTES DA REDE SOCIAL: ");
+        for(String nome : grafo.top3MaisInfluentes()){
+            System.out.println(nome);
+        }
+
+    }
+
+}

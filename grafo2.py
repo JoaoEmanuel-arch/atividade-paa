@@ -5,7 +5,7 @@ G = nx.DiGraph()
 
 G.add_nodes_from(["A","B","C","D","E","F","G","H"])
 
-restas = [
+arestas = [
     # Comunidade 1
     ("A","B",0.91),
     ("B","C",0.85),

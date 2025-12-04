@@ -8,7 +8,7 @@ G = nx.DiGraph()
 G.add_nodes_from(["A", "B", "C", "D", "E", "F", "G", "H"])
 
 # Adicionar arestas com pesos
-Arestas = [
+arestas = [
     ("A", "B", 0.80),
     ("A", "G", 0.50),
     ("A", "F", 0.08),
