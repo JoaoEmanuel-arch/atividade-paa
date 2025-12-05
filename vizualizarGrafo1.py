@@ -1,13 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-# Criar grafo direcionado
 G = nx.DiGraph()
 
-# Adicionar nós
 G.add_nodes_from(["A", "B", "C", "D", "E", "F", "G", "H"])
 
-# Adicionar arestas com pesos
 arestas = [
     ("A", "B", 0.80),
     ("A", "G", 0.50),
@@ -34,23 +31,17 @@ arestas = [
 for origem, destino, peso in arestas:
     G.add_edge(origem, destino, weight=peso)
 
-# Layout visual
 pos = nx.spring_layout(G, seed=42)
 
-# Desenhar nós
 nx.draw_networkx_nodes(G, pos, node_size=800, node_color="lightblue")
 
-# Desenhar nomes dos nós
 nx.draw_networkx_labels(G, pos, font_size=10, font_weight="bold")
 
-# Desenhar arestas
 nx.draw_networkx_edges(G, pos, arrowstyle="->", arrowsize=20, width=2)
 
-# Mostrar pesos nas arestas
 edge_labels = {(u, v): f"{d['weight']:.2f}" for u, v, d in G.edges(data=True)}
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color="red")
 
-# Mostrar
 plt.title("Grafo 1 - Rede com centro forte e caminhos encadeados")
 plt.axis("off")
 plt.show()

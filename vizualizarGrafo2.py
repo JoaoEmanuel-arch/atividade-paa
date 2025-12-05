@@ -20,7 +20,6 @@ arestas = [
     ("E","G",0.59),
     ("F","H",0.48),
 
-    # Ligações fracas entre comunidades
     ("C","F",0.22),
     ("B","E",0.17),
     ("D","G",0.12),
